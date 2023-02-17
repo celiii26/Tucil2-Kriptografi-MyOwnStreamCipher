@@ -132,4 +132,3 @@ def str_to_hex(string):
         h = "%02X" % (ord(c))
         hexx.append(h)
     return (''.join(hexx))
-

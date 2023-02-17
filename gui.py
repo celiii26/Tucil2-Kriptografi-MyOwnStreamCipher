@@ -96,38 +96,12 @@ def file():
         #write_byte_file("enkrip%s" % extension, enkrip)
         #return ("enkrip%s" % extension)
     
-        if action == "Encrypt" and input == "string":
+        if action == "Encrypt":
             hasil = streamCipher.enkripFile(path, key)
-            if output == "hex":
-                streamCipher.write_byte_file("hasil%s" % extension, hasil)
-            elif output == "base64":
-                hasil = streamCipher.hex_to_base64(hasil)
-                streamCipher.write_byte_file("hasil%s" % extension, hasil)
-            else:
-                return redirect(request.url)
-        elif action == "Decrypt" and input == "hex":
+            streamCipher.write_byte_file("hasil%s" % extension, hasil)
+        elif action == "Decrypt":
             hasil = streamCipher.dekripFile(path, key)
-            if output == "string":
-                streamCipher.write_byte_file("hasil%s" % extension, hasil)
-            elif output == "base64":
-                hasil = streamCipher.str_to_base64(hasil)
-                streamCipher.write_byte_file("hasil%s" % extension, hasil)
-            else:
-                hasil = streamCipher.str_to_hex(hasil)
-                streamCipher.write_byte_file("hasil%s" % extension, hasil)
-        elif action == "Decrypt" and input == "base64":
-            file = streamCipher.open_byte_file(path)
-            text = file.decode("ISO-8859-1")
-            text = streamCipher.base64_to_hex(text)
-            hasil = streamCipher.dekrip(text, key)
-            if output == "string":
-                streamCipher.write_byte_file("hasil%s" % extension, hasil)
-            elif output == "base64":
-                hasil = streamCipher.str_to_base64(hasil)
-                streamCipher.write_byte_file("hasil%s" % extension, hasil)
-            else:
-                hasil = streamCipher.str_to_hex(hasil)
-                streamCipher.write_byte_file("hasil%s" % extension, hasil)
+            streamCipher.write_byte_file("hasil%s" % extension, hasil)
         return redirect('/showfile/hasil%s' % extension)
 
     else:
@@ -144,20 +118,6 @@ def file():
         <select name="action" id="action">
         <option value="Encrypt">Encrypt</option>
         <option value="Decrypt">Decrypt</option>
-        </select>
-
-        <label for="input">Input format :</label>
-        <select name="input" id="input">
-        <option value="string">string</option>
-        <option value="hex">hex</option>
-        <option value="base64">base64</option>
-        </select>
-
-        <label for="output">Output format :</label>
-        <select name="output" id="output">
-        <option value="string">string</option>
-        <option value="hex">hex</option>
-        <option value="base64">base64</option>
         </select>
 
         <h4> Masukan Path File </h4>
