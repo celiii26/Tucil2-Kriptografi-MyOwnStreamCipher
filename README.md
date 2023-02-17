@@ -1,5 +1,5 @@
 # Tucil2 Kriptografi MyOwnStreamCipher
-oleh Kirana Shely Sefiana
+oleh Kirana Shely Sefiana - 18220036
 
 ### Cara Run
 Program ini menggunakan virtual environment sehingga anda perlu mendownload beberapa requirement sebelumnya.
